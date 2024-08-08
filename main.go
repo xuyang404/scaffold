@@ -25,7 +25,7 @@ func main() {
 	flag.StringVar(&localTemplatePath, "local", "", "本地模板路径")
 	flag.StringVar(&remoteTemplatePath, "remote", "", "远程仓库url")
 	flag.StringVar(&projectName, "name", "", "项目名称")
-	flag.StringVar(&branch, "branch", "main", "要使用的分支（仅当模板是远程仓库时）")
+	flag.StringVar(&branch, "branch", "master", "要使用的分支（仅当模板是远程仓库时）")
 
 	flag.Parse()
 	if localTemplatePath == "" && remoteTemplatePath == "" {
@@ -93,7 +93,7 @@ func handleRemoteTemplate(templateRepo, branch, projectName string, replacements
 func getReplacements() map[string]string {
 	scanner := bufio.NewScanner(os.Stdin)
 	replacements := make(map[string]string)
-	fmt.Println("输入替换值(key=value)，空行结束: ")
+	fmt.Println("输入替换值(key=value)，空行回车结束: ")
 	for {
 		fmt.Print("> ")
 		scanner.Scan()
